@@ -39,7 +39,7 @@ public class UserController {
 
     @GetMapping("/create")
     public ModelAndView showCreate(){
-        ModelAndView modelAndView = new ModelAndView("/create");
+        ModelAndView modelAndView = new ModelAndView("create");
         modelAndView.addObject("user",new User());
         return modelAndView;
     }
@@ -56,7 +56,7 @@ public class UserController {
                                    @PageableDefault(value = 5, page = 0)
                                    @SortDefault(sort = "username", direction = Sort.Direction.DESC)
                                            Pageable pageable) {
-        ModelAndView modelAndView = new ModelAndView("/list");
+        ModelAndView modelAndView = new ModelAndView("list");
         Page<User> userPage;
         if (category.isPresent()){
             userPage = userService.findAllByUsernameContainingAndCategory(keyword.orElse(""), category.get(), pageable);
@@ -70,28 +70,28 @@ public class UserController {
     }
     @GetMapping("/{id}/edit")
     public ModelAndView showEdit(@PathVariable Long id){
-        ModelAndView modelAndView = new ModelAndView("/edit");
+        ModelAndView modelAndView = new ModelAndView("edit");
         modelAndView.addObject("user",userService.findById(id));
         return modelAndView;
     }
 
     @PostMapping("/{id}/edit")
     public String edit(User user){
-        ModelAndView modelAndView = new ModelAndView("/edit");
+        ModelAndView modelAndView = new ModelAndView("edit");
         userService.save(user);
         return "redirect:/users/find";
     }
 
     @GetMapping("/{id}/delete")
     public ModelAndView showDelete(@PathVariable Long id){
-        ModelAndView modelAndView = new ModelAndView("/delete");
+        ModelAndView modelAndView = new ModelAndView("delete");
         modelAndView.addObject("user",userService.findById(id));
         return modelAndView;
     }
 
     @PostMapping("/{id}/delete")
     public String delete(User user){
-        ModelAndView modelAndView = new ModelAndView("/delete");
+        ModelAndView modelAndView = new ModelAndView("delete");
         userService.remove(user);
         return "redirect:/users/find";
     }
