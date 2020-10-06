@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<h1>delete user</h1>
+<form th:object="${user}" method="post">
+    <input type="hidden" th:field="*{id}">
+    <table class="table">
+        <tr>
+            <td>
+                <label>username:
+                    <input type="text" th:field="*{username} ">
+                </label>
+            </td>
+        </tr>
+        <tr>
+            <td>phone number:
+                <input type="text" th:field="*{phoneNumber}">
+                </label>
+            </td>
+
+        </tr>
+        <tr>
+            <td>
+                <label>address:
+                    <input type="text" th:field="*{address}">
+                </label>
+            </td>
+        </tr>
+        <tr>
+            <td>category:
+                <input type="text" th:field="*{category.name}">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit" value="delete">
+            </td>
+        </tr>
+    </table>
+
+
+
+
+</form>
+
+</body>
+</html>
